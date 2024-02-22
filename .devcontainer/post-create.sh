@@ -6,4 +6,4 @@ sudo apt update -y
 sudo apt install xmake -y
 
 # opencv
-sudo apt install libopencv-dev clang libclang-dev
+sudo apt install libopencv-dev clang libclang-dev -y
