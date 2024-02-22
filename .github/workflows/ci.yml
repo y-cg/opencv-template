@@ -16,15 +16,18 @@ jobs:
       - name: Install Homebrew
         run:
           curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
-      - name: Install opencv
-        run: brew install opencv
-      - name: Install xmake
-        run: brew install xmake
+      - name: Install deps
+        run: brew install opencv xmake dust
       - uses: actions/checkout@v4
         with:
           submodules: true
       - name: Build
         run: xmake build -vD
+      - name: Check Target Size
+        run: |
+          dust
+          dust ~/.xmake
+         
   macos-xrepo-check:
     runs-on: macos-14
     name: Check on macOS / Xrepo
@@ -32,10 +35,14 @@ jobs:
       - name: Install Homebrew
         run:
           curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
-      - name: Install xmake
-        run: brew install xmake
+      - name: Install deps
+        run: brew install xmake dust
       - uses: actions/checkout@v4
         with:
           submodules: true
       - name: Build
         run: xmake build -vD -y
+      - name: Check Target Size
+        run: |
+          dust
+          dust ~/.xmake
