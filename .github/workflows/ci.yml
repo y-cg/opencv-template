@@ -9,7 +9,7 @@ concurrency:
   cancel-in-progress: true
 name: CI
 jobs:
-  macos-check:
+  macos-homebrew-check:
     runs-on: macos-14
     name: Check on macOS
     steps:
@@ -18,6 +18,20 @@ jobs:
           curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
       - name: Install opencv
         run: brew install opencv
+      - name: Install xmake
+        run: brew install xmake
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+      - name: Build
+        run: xmake build -vD
+  macos-xrepo-check:
+    runs-on: macos-14
+    name: Check on macOS
+    steps:
+      - name: Install Homebrew
+        run:
+          curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
       - name: Install xmake
         run: brew install xmake
       - uses: actions/checkout@v4
