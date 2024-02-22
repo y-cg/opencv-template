@@ -51,13 +51,14 @@ jobs:
     runs-on: windows-latest
     name: Check on Windows / mingw / Xrepo
     steps:
-      - name: Install Scoop
-        run:
-          iwr -useb get.scoop.sh | iex
-      - name: Install deps
-        run: |
-          scoop bucket add main 
-          scoop install main/xmake main/mingw
+      - name: Setup Xmake
+        uses: xmake-io/github-action-setup-xmake@v1
+        with:
+          xmake-version: latest
+      - name: Set up MinGW
+        uses: egor-tensin/setup-mingw@v2
+        with:
+          platform: x64
       - uses: actions/checkout@v4
         with:
           submodules: true
