@@ -57,3 +57,34 @@ jobs:
           submodules: true
       - name: Build
         run: xmake build -vD -y
+
+  ubuntu-gcc-xrepo-check:
+    runs-on: ubuntu-latest
+    name: Check on Linux / gcc / Xrepo
+    steps:
+      - name: Setup Xmake
+        uses: xmake-io/github-action-setup-xmake@v1
+        with:
+          xmake-version: latest
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+      - name: Build
+        run: xmake build -vD -y
+
+  ubuntu-clang-system-check:
+    runs-on: ubuntu-latest
+    name: Check on Linux / clang / Sys
+    steps:
+      - name: Setup Xmake
+        uses: xmake-io/github-action-setup-xmake@v1
+        with:
+          xmake-version: latest
+      - name: Setup clang / Opencv
+        run: |
+          sudo apt install libopencv-dev clang libclang-dev
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+      - name: Build
+        run: xmake build -vD -y
