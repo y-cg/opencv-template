@@ -10,6 +10,7 @@ concurrency:
 name: CI
 jobs:
   macos-homebrew-check:
+    if: false # see: https://github.com/xmake-io/xmake-repo/issues/3316
     runs-on: macos-14
     name: Check on macOS / Homebrew
     steps:
@@ -17,16 +18,12 @@ jobs:
         run:
           curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
       - name: Install deps
-        run: brew install opencv xmake dust
+        run: brew install opencv xmake
       - uses: actions/checkout@v4
         with:
           submodules: true
       - name: Build
         run: xmake build -vD -y
-      - name: Check Target Size
-        run: |
-          dust
-          dust ~/.xmake
          
   macos-xrepo-check:
     runs-on: macos-14
@@ -36,16 +33,12 @@ jobs:
         run:
           curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
       - name: Install deps
-        run: brew install xmake dust
+        run: brew install xmake
       - uses: actions/checkout@v4
         with:
           submodules: true
       - name: Build
         run: xmake build -vD -y
-      - name: Check Target Size
-        run: |
-          dust
-          dust ~/.xmake
 
   windows-mingw-xrepo-check:
     runs-on: windows-latest
