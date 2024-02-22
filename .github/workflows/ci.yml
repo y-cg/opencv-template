@@ -46,3 +46,20 @@ jobs:
         run: |
           dust
           dust ~/.xmake
+
+  windows-mingw-xrepo-check:
+    runs-on: windows-latest
+    name: Check on Windows / mingw / Xrepo
+    steps:
+      - name: Install Scoop
+        run:
+          iwr -useb get.scoop.sh | iex
+      - name: Install deps
+        run: |
+          scoop bucket add main 
+          scoop install main/xmake main/mingw
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+      - name: Build
+        run: xmake build -vD -y
