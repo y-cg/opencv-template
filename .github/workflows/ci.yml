@@ -56,7 +56,7 @@ jobs:
         with:
           xmake-version: latest
       - name: Set up MinGW
-        uses: egor-tensin/setup-mingw@v2
+        uses: e-t-l/setup-mingw@patch-1
         with:
           platform: x64
       - uses: actions/checkout@v4
