@@ -2,6 +2,9 @@ add_rules("mode.debug", "mode.release")
 -- for clangd
 add_rules("plugin.compile_commands.autoupdate")
 
+-- cpp version
+set_languages("cxx11")
+
 -- opencv
 add_requires("opencv")
 
