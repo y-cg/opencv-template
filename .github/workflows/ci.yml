@@ -22,7 +22,7 @@ jobs:
         with:
           submodules: true
       - name: Build
-        run: xmake build -vD
+        run: xmake build -vD -y
       - name: Check Target Size
         run: |
           dust

@@ -6,7 +6,7 @@ add_rules("plugin.compile_commands.autoupdate")
 set_languages("cxx11")
 
 -- opencv
-add_requires("opencv")
+add_requires("opencv", {system = false})
 
 target("hello")
     set_kind("binary")
