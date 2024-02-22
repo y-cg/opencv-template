@@ -1,8 +1,14 @@
 add_rules("mode.debug", "mode.release")
+-- for clangd
+add_rules("plugin.compile_commands.autoupdate")
+
+-- opencv
+add_requires("opencv")
 
 target("hello")
     set_kind("binary")
     add_files("src/*.cpp")
+    add_packages("opencv")
 
 --
 -- If you want to known more usage about xmake, please see https://xmake.io
