@@ -24,7 +24,7 @@ jobs:
       - name: Build
         run: |
           # see: https://github.com/xmake-io/xmake-repo/issues/3316
-          xrepo add-repo xmake-repo https://github.com/xmake-io/xmake-repo.git dev
+          xrepo add-repo xmake-repo https://github.com/y-cg/xmake-repo.git opencv-brew-sysinclude # wait upstream
           xmake build -vD -y
          
   macos-xrepo-check:
