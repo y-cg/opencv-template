@@ -10,7 +10,6 @@ concurrency:
 name: CI
 jobs:
   macos-homebrew-check:
-    if: false # see: https://github.com/xmake-io/xmake-repo/issues/3316
     runs-on: macos-14
     name: Check on macOS / Homebrew
     steps:
@@ -23,7 +22,10 @@ jobs:
         with:
           submodules: true
       - name: Build
-        run: xmake build -vD -y
+        run: |
+          # see: https://github.com/xmake-io/xmake-repo/issues/3316
+          xrepo add-repo xmake-repo https://github.com/xmake-io/xmake-repo.git dev
+          xmake build -vD -y
          
   macos-xrepo-check:
     runs-on: macos-14
