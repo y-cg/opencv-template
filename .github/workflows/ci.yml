@@ -4,7 +4,7 @@ on:
   push:
     branches: [master]
   pull_request:
-  workflow_disptach:
+  workflow_dispatch:
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
   cancel-in-progress: true
